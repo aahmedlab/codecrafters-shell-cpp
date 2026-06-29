@@ -6,17 +6,22 @@ int main() {
   // Flush after every std::cout / std:cerr
   cout << std::unitbuf;
   cerr << std::unitbuf;
-
-  cout << "$ ";
+  string command;
   while (true)
   {
-    string command;
-    cin >> command;
-    if (command == "exit") break;
-    else
-    {
-      cout << command << ": command not found\n";
-      cout << "$ ";
+    cout << "$ ";
+    // Safely reads the entire line at once
+    if (!getline(cin, command)) {
+      break;
     }
+
+    if (command.empty()) {
+      continue;
+    }
+
+    if (command == "exit") break;
+
+    cout << command << ": command not found\n";
   }
+  return 0;
 }
