@@ -1,10 +1,22 @@
 #include <iostream>
 #include <string>
+using namespace std;
 
 int main() {
   // Flush after every std::cout / std:cerr
-  std::cout << std::unitbuf;
-  std::cerr << std::unitbuf;
+  cout << std::unitbuf;
+  cerr << std::unitbuf;
 
-  std::cout << "$ ";
+  cout << "$ ";
+  while (true)
+  {
+    string command;
+    cin >> command;
+    if (command == "exit") break;
+    else
+    {
+      cout << command << ": command not found\n";
+      cout << "$ ";
+    }
+  }
 }
